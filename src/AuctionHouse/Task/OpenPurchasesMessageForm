@@ -1,0 +1,46 @@
+<?php
+
+namespace PrestigeSociety\AuctionHouse\Task;
+use pocketmine\Player;
+use pocketmine\scheduler\Task;
+use AuctionHouse\AuctionHouse;
+use AuctionHouse\UIForms\SimpleForm;
+use AuctionHouse\Utils\RandomUtils;
+class OpenPurchasesMessageForm extends Task{
+        /** @var string */
+        public $message;
+        /** @var Player */
+        public $player;
+
+        /**
+         *
+         * OpenPurchasesMessageForm constructor.
+         *
+         * @param AuctionHouse $loader
+         * @param string                 $message
+         * @param Player                 $player
+         *
+         */
+        public function __construct(AuctionHouse $loader, string $message, Player $player){
+                $this->message = $message;
+                $this->player = $player;
+        }
+
+        /**
+         *
+         * Actions to execute when run
+         *
+         * @param int $currentTick
+         *
+         * @return void
+         *
+         */
+        public function onRun(int $currentTick){
+                $simpleForm = new SimpleForm();
+                $simpleForm->setId(0);
+                $simpleForm->setTitle(RandomUtils::colorMessage("&e&k|&r&5&lPEOPLE BOUGHT FROM YOU&r&k&e|"));
+                $simpleForm->setContent($this->message);
+                $simpleForm->setButton("Okay");
+                $simpleForm->send($this->player);
+        }
+}
