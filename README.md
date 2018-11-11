@@ -9,3 +9,5 @@ Commands:
 this command to get to the last item you looked at.
 + `/myoffers`: an ui with a list of items you added to the auction house will appear, 
 you can remove items from there.
+
+[ Project Is Not Finished & Has Not Been Tested! ]
